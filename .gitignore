@@ -1,2 +1,5 @@
-*.log
 node_modules/
+.env
+*.log
+yarn.lock
+.vscode/
