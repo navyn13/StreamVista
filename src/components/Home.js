@@ -1,11 +1,20 @@
 import "./Home.css";
 import React from "react";
-import video_thumbnail from "./video_thumbnail";
-function Home(){
-    return(
-        <div className="Home">
-            <video_thumbnail></video_thumbnail>
-        </div>
-    )
+import Video_thumbnail from "./Video_thumbnail";
+function Home() {
+  return (
+    <div className="Home">
+      <Video_thumbnail></Video_thumbnail>
+      <Video_thumbnail></Video_thumbnail>
+      <Video_thumbnail></Video_thumbnail>
+      <Video_thumbnail></Video_thumbnail>
+      <Video_thumbnail></Video_thumbnail>
+      <Video_thumbnail></Video_thumbnail>
+      <Video_thumbnail></Video_thumbnail>
+      <Video_thumbnail></Video_thumbnail>
+      <Video_thumbnail></Video_thumbnail>
+      <Video_thumbnail></Video_thumbnail>
+    </div>
+  );
 }
 export default Home;

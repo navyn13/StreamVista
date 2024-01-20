@@ -1,6 +1,40 @@
-.video_thumbnail{
-    height: 400px;
+.Video_thumbnail{
+    display: flex;
+    flex-direction: column;
+    height: 270px;
     width: 300px;
-    background-color: rgb(188, 3, 3);
+    margin: 20px 15px;
+    border-radius: 15px;
 
+}
+.thumbnail>img{
+    height: 200px;
+    width: 300px;
+    border-radius: 15px;
+    
+}
+
+.info{
+    display: flex;
+    padding: 10px;
+
+
+}
+.channel_pic> img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.data{
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    font-size: larger;
+    font-weight: 600;
+    color: rgb(198, 198, 198);
+}
+.channel_name{
+    color: rgb(184, 182, 182);
 }
