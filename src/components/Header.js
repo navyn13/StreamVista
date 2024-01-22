@@ -24,7 +24,7 @@ function Header() {
         <div className="theme">
           <SettingsBrightnessIcon style={{ color: "white" }}></SettingsBrightnessIcon>
         </div>
-        <Link to={"/login"} style={{ textDecoration: "none" }}>
+        <Link to={"/signup"} style={{ textDecoration: "none" }}>
           <div className="profile">
             <PersonIcon style={{ color: "white" }}></PersonIcon>
           </div>
