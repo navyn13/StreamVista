@@ -5,11 +5,14 @@ const cors = require('cors')
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+
+app.use(cors());
 app.use('/', routes);
 app.use(bodyParser.json());
 
 
-app.use(cors());
+
+
 
 mongoose.connect('mongodb+srv://navyn13102003:reliance@cluster0.em2erl6.mongodb.net/?retryWrites=true&w=majority');
 const db = mongoose.connection;

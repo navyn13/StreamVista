@@ -10,17 +10,16 @@ function Signup() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  function handleSubmit(){
-    console.log(username, email, password)
-    axios.post('/signup', {username, email, password})
-    .then(response => {
-      console.log(response.data);
-      // navigate('/');
-  })
-
-    .catch((error) => {
-        console.error("Error:", error);
+  function handleSubmit() {
+    axios
+      .post(`/signup?username=${username}&email=.${email}&password=${password}`)
+      .then((response) => {
+        console.log(response.data);
+        navigate("/");
       })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   return (
