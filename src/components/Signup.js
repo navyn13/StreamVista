@@ -14,7 +14,6 @@ function Signup() {
     axios
       .post(`/signup?username=${username}&email=.${email}&password=${password}`)
       .then((response) => {
-        console.log(response.data);
         navigate("/");
       })
       .catch((error) => {
