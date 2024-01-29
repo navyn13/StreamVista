@@ -35,7 +35,7 @@ function Login() {
   return (
     <div className="Login">
       <div className="logo-box">
-        <Link to={'/'}><img src="https://i.imgur.com/oN050gi.png"></img></Link>
+        <Link to={'/'}><img src="white_logo.png"></img></Link>
       </div>
       <div className="Login_box">
         <p>Email:</p>

@@ -21,12 +21,15 @@ function Header() {
     <div className="Header">
       <div className="logo">
         <img
-          src="https://i.imgur.com/oN050gi.png"
+          src="dark_logo.png"
           alt="logo"
         ></img>
       </div>
       <div className="search_box">
-        <input className="search_bar"></input>
+        <input className="search_bar" placeholder="Enter stream ID"></input>
+      </div>
+      <div className="btn_live">
+      <button>GO LIVE</button>
       </div>
       <div className="features">
         <div className="notification">
