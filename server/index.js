@@ -1,15 +1,14 @@
 const express = require('express');
 const app = express()
-const routes = require('./server/routes/index');
+const routes = require('./routes/index');
 const cors = require('cors')
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 
 app.use(cors());
-app.use('/', routes);
 app.use(bodyParser.json());
-
+app.use('/', routes);
 
 
 

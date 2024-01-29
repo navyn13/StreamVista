@@ -8,11 +8,12 @@ const jwt = require("jsonwebtoken");
 
 exports.signup = async (req, res) => {
   try {
-    const { username, email, password } = req.query; 
+    const { username, email, password } = req.body; 
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
       return res.status(400).json({ success: false, message: "Email is already in use" });
     }
+    
     const hashedPassword = bcrypt.hashSync(password, 10);
     const newUser = new User({
       username,
@@ -31,9 +32,9 @@ exports.signup = async (req, res) => {
 
 
 exports.login = async (req, res) => {
+
   try {
-    const { email, password } = req.query;
-    console.log(email, password)
+    const { email, password } = req.body;
     const user = await User.findOne({ email: email });
 
     if (!user) {
@@ -41,8 +42,8 @@ exports.login = async (req, res) => {
     }
     const match = await bcrypt.compare(password, user.password);
     if (match) {
-      var token = jwt.sign({ email: user.email }, "secret_key");
-      res.json({ success: true, token, message: "Correct Credentials" });
+      var token = jwt.sign({ email: user.email, username: user.username }, "secret_key");
+      res.json({ success: true, message: "Correct Credentials", token });
     } else {
       res.status(401).json({ success: false, message: "Invalid Credentials" });
     }

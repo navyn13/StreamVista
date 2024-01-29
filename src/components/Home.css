@@ -1,8 +1,0 @@
-.Home{
-    display: flex;
-    flex-wrap: wrap;
-    background-color: rgb(75, 68, 172);
-    max-height: max-content;
-    min-height: 100vh;
-    padding: 40px;
-}

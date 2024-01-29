@@ -4,16 +4,28 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "./axios";
 import { useNavigate } from "react-router-dom";
+import { useStateValue } from "./StateProvider";
 function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  
+  const [{ isAuth }, dispatch] = useStateValue();
   function handleSubmit() {
+    const userData={
+      username, email , password
+    }
     axios
-      .post(`/signup?username=${username}&email=.${email}&password=${password}`)
+      .post(
+        '/signup', userData)
       .then((response) => {
+        const { token } = response.data;
+        localStorage.setItem("jwtToken", token);
+        dispatch({
+          type: "SET_AUTH",
+          isAuth: true,
+        })
         navigate("/");
       })
       .catch((error) => {
@@ -23,7 +35,11 @@ function Signup() {
 
   return (
     <div className="Signup">
-      <div className="Signup_form">
+      <div className="logo-box">
+        <Link to={'/'}><img src="https://i.imgur.com/oN050gi.png"></img></Link>
+      </div>
+      <div className="Signup_box">
+        <p>Username:</p>
         <input
           id="username"
           type="text"
@@ -33,6 +49,7 @@ function Signup() {
             setUsername(e.target.value);
           }}
         ></input>
+        <p>Email:</p>
         <input
           id="email"
           type="email"
@@ -42,6 +59,7 @@ function Signup() {
             setEmail(e.target.value);
           }}
         ></input>
+        <p>Password:</p>
         <input
           id="password"
           type="password"

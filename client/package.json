@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "react-scripts start",
-    "server": "nodemon index.js"
+    "start": "react-scripts start"
   },
   "author": "Naveen Krishna Gupta",
   "license": "ISC",
@@ -27,6 +26,7 @@
     "nodemon": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-jwt": "^1.2.0",
     "react-router": "^6.21.3",
     "react-router-dom": "^6.21.3",
     "react-scripts": "^5.0.1",

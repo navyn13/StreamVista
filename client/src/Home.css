@@ -1,0 +1,12 @@
+.Home{
+    background-color: rgb(67, 67, 67);
+    max-height: max-content;
+    min-height: 100vh;
+    padding: 40px;
+}
+.videos_grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}

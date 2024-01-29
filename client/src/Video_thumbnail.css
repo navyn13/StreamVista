@@ -3,14 +3,13 @@
     flex-direction: column;
     height: 270px;
     width: 300px;
-    margin: 20px 15px;
-    border-radius: 15px;
-
+    margin: 10px 18px;
 }
 .thumbnail>img{
     height: 200px;
     width: 300px;
-    border-radius: 15px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 8px #888888;
     
 }
 
