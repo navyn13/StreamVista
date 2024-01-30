@@ -14,8 +14,7 @@ function Home() {
       <Video_thumbnail></Video_thumbnail>
       <Video_thumbnail></Video_thumbnail>
       <Video_thumbnail></Video_thumbnail>
-      <Video_thumbnail></Video_thumbnail>
-      <Video_thumbnail></Video_thumbnail>
+
       </div>
       
     </div>

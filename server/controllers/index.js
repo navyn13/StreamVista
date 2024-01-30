@@ -51,3 +51,8 @@ exports.login = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 };
+
+exports.watch = async (req, res)=>{
+  console.log(req.query);
+  res.status(200).json({ message: 'req aai thi'})
+}

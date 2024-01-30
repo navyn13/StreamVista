@@ -9,7 +9,7 @@
     height: 200px;
     width: 300px;
     border-radius: 5px;
-    box-shadow: 10px 10px 8px #888888;
+    box-shadow: 5px 5px 8px rgb(118, 118, 118);
     
 }
 
@@ -32,8 +32,8 @@
 .title{
     font-size: larger;
     font-weight: 600;
-    color: rgb(198, 198, 198);
+    color: rgb(50, 50, 50);
 }
 .channel_name{
-    color: rgb(184, 182, 182);
+    color: rgb(42, 42, 42);
 }
