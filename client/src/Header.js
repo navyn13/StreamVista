@@ -40,7 +40,7 @@ function Header() {
       </div></Link>
 
       <div className="search_box">
-        <input className="search_bar" onChange={(e) => { setRoomId(e.target.value) }} placeholder="Enter stream ID"></input>
+        <input className="search_bar" onChange={(e) => { setRoomId(e.target.value) }} placeholder="stream id"></input>
         <button onClick={searchVideo}>Search</button>
       </div>
       <div className="btn_live">
