@@ -60,6 +60,8 @@
 }
 
 .btn_live > button:hover {
+    background-color: #959595;
+    color: black;
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(241, 241, 241, 0.3);
     transition: transform 0.1s;
