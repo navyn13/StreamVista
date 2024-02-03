@@ -7,10 +7,12 @@ import { useNavigate, Link } from "react-router-dom";
 import { useStateValue } from './StateProvider'
 import { color, fontFamily } from "@mui/system";
 import { v4 as uuidv4 } from 'uuid';
+
 function Header() {
   const [{ user, isAuth }, dispatch] = useStateValue();
   const navigate = useNavigate();
-  const [roomId, setRoomId] = useState('')
+  const[roomId, setRoomId] = useState('')
+  
   function logout() {
     localStorage.removeItem('jwtToken');
     dispatch({
@@ -19,7 +21,9 @@ function Header() {
     })
   }
   function searchVideo() {
-    navigate(`watch?room=${roomId}`)
+    if(roomId!=""){
+      navigate(`watch?room=${roomId}`)
+    }
   }
   function goLive() {
     const myUUID = uuidv4();
@@ -30,7 +34,7 @@ function Header() {
     <div className="Header">
       <Link to={"/"} style={{ textDecoration: "none" }}><div className="logo">
         <img
-          src="dark_logo.png"
+          src="https://www.pngkey.com/png/full/42-423965_twitch-logo-white-png.png"
           alt="logo"
         ></img>
       </div></Link>

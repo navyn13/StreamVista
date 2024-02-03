@@ -35,8 +35,8 @@ function Signup() {
 
   return (
     <div className="Signup">
-      <div className="logo-box">
-        <Link to={'/'}><img src="white_logo.png"></img></Link>
+      <div className="logo_box">
+        <Link to={'/'}><img src="https://www.pngkey.com/png/full/42-423965_twitch-logo-white-png.png"></img></Link>
       </div>
       <div className="Signup_box">
         <p>Username:</p>

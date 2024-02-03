@@ -9,16 +9,13 @@ import { useStateValue } from "./StateProvider"
 import { useJwt } from "react-jwt";
 import { useState } from "react";
 import Watch_Video from "./Watch_Video";
-import io from 'socket.io-client';
-const socket = io('http://localhost:4000');
+
+
 
 function App() {
   const [{ isAuth }, dispatch] = useStateValue();
   const jwtToken = localStorage.getItem('jwtToken')
-  var decodedToken;
-  if(jwtToken){
-    decodedToken  = useJwt(jwtToken).decodedToken;
-  }
+  const{decodedToken, isExpired}  = useJwt(jwtToken);
 
   useEffect(() => {
       if (decodedToken) {

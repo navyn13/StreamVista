@@ -36,17 +36,13 @@ app.get('/', (req, res) => {
 
 io.on("connection", (socket) => {
   console.log(socket.id);
-  socket.on("connect", () => {
-    console.log("a user connected");
+
+  socket.on('joinRoom', (roomID) => {
+    socket.join(roomID);
   });
-  socket.on("connect_error", () => {
-    console.log("user connect_error");
-  });
-  socket.on("disconnect", () => {
-    console.log('a user disconnected'); 
-  });
-  socket.on("msg", (data)=>{
-    console.log(data)
+
+  socket.on("send_msg", (data)=>{
+    io.to(data.room).emit('recieve_msg', data);
   })
 })
 

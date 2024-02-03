@@ -30,9 +30,14 @@
 .Signup{
     padding: 20px;
 }
-.logo-box{
-    width: fit-content;
+.logo_box{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+.logo_box  img{
+    height: 100px;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 30px;
 }
