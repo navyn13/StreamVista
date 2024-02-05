@@ -1,5 +1,5 @@
 import "./Signup.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "./axios";
@@ -9,29 +9,37 @@ function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [pfp, setPfp] = useState(null)
   const navigate = useNavigate();
-  
   const [{ isAuth }, dispatch] = useStateValue();
-  function handleSubmit() {
-    const userData={
-      username, email , password
+
+  async function handleSubmit() {
+    console.log(pfp)
+    const userData = {
+      username, email, password
     }
-    axios
-      .post(
-        '/signup', userData)
-      .then((response) => {
-        const { token } = response.data;
-        localStorage.setItem("jwtToken", token);
-        dispatch({
-          type: "SET_AUTH",
-          isAuth: true,
-        })
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+    const formData = new FormData();
+    formData.append('image', pfp)
+    try {
+      const response = await axios.post('/signup', userData);
+      const { token } = response.data;
+      localStorage.setItem("jwtToken", token);
+      dispatch({
+        type: "SET_AUTH",
+        isAuth: true,
       });
+      await axios.post('profile', formData,{
+        headers: {
+          "Content-Type": 'multipart/form-data',
+        },
+      })
+      navigate('/')
   }
+  catch(error){
+    console.log('Error: ', error)
+  }
+}
+
 
   return (
     <div className="Signup">
@@ -48,6 +56,7 @@ function Signup() {
           onChange={(e) => {
             setUsername(e.target.value);
           }}
+          required
         ></input>
         <p>Email:</p>
         <input
@@ -58,6 +67,7 @@ function Signup() {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
+          required
         ></input>
         <p>Password:</p>
         <input
@@ -68,7 +78,9 @@ function Signup() {
           onChange={(e) => {
             setPassword(e.target.value);
           }}
+          required
         ></input>
+        <input type="file" onChange={(e) => { setPfp(e.target.files[0]) }} name="pfp" required />
         <button onClick={handleSubmit}>Create</button>
         <Link to={"/login"} style={{ textDecoration: "none" }}>
           <p>Already a user</p>

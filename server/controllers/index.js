@@ -4,6 +4,19 @@ const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads')
+  },
+  filename: function (req, file, cb) {
+    const uniquePrefix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+    cb(null, uniquePrefix + ' ' + file.originalname)
+  }
+})
+const upload = multer({ storage: storage })
+
+
 
 
 exports.signup = async (req, res) => {
@@ -56,3 +69,10 @@ exports.watch = async (req, res)=>{
   console.log(req.query);
   res.status(200).json({ message: 'req aai thi'})
 }
+
+exports.setProfilePic = async (req, res)=>{
+  console.log(req.body)
+  console.log(req.file)
+}
+
+exports.uploadProfilePic = upload.single('image')
