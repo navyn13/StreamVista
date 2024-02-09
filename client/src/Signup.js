@@ -14,7 +14,6 @@ function Signup() {
   const [{ isAuth }, dispatch] = useStateValue();
 
   async function handleSubmit() {
-    console.log(pfp)
     const userData = {
       username, email, password
     }
@@ -80,6 +79,7 @@ function Signup() {
           }}
           required
         ></input>
+        <p>Profile Pic:</p>
         <input type="file" onChange={(e) => { setPfp(e.target.files[0]) }} name="pfp" required />
         <button onClick={handleSubmit}>Create</button>
         <Link to={"/login"} style={{ textDecoration: "none" }}>

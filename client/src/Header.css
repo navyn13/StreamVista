@@ -54,15 +54,15 @@
     color: rgb(129, 129, 129);
 }
 .search_box button:hover {
-    background-color: #b1b1b1;
+    background-color: #e3e3e3;
     color: rgb(36, 36, 36); 
     transition: background-color 0.3s, color 0.3s;
 }
 
 .btn_live > button:hover {
-    background-color: #959595;
+    background-color: #f1f1f1;
     color: black;
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(241, 241, 241, 0.3);
-    transition: transform 0.1s;
+    transition: transform 0.2s ,background-color 0.2s;
 }

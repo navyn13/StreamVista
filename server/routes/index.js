@@ -5,6 +5,6 @@ const { signup, login, watch, setProfilePic, uploadProfilePic } = require("../co
 router.post("/signup", signup)
 .post("/login", login)
 .post("/watch", watch)
-.post('/profile', uploadProfilePic,  setProfilePic);
+.post('/profile',  uploadProfilePic, setProfilePic);
 
 module.exports = router;
