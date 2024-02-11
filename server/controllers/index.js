@@ -49,7 +49,7 @@ async function putObject(filename, contentType) {
 
 exports.signup = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, imgAddress } = req.body;
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
       return res.status(400).json({ success: false, message: "Email is already in use" });
@@ -59,6 +59,7 @@ exports.signup = async (req, res) => {
       username,
       email,
       password: hashedPassword,
+      imgAddress,
     });
     await newUser.save();
     const token = jwt.sign({ username, email }, "secret_key");
@@ -83,7 +84,7 @@ exports.login = async (req, res) => {
     const match = await bcrypt.compare(password, user.password);
     if (match) {
       var token = jwt.sign({ email: user.email, username: user.username }, "secret_key");
-      res.json({ success: true, message: "Correct Credentials", token });
+      res.json({ success: true, message: "Correct Credentials", token: token, user: user });
     } else {
       res.status(401).json({ success: false, message: "Invalid Credentials" });
     }
@@ -103,9 +104,11 @@ exports.uploadProfilePic = upload.single('image')
 
 exports.setProfilePic = async (req, res) => {
   try {
+    console.log(req.file)
     const uniqueName = Date.now() + ".jpeg" 
     const uploadingUrl  = await putObject(uniqueName, 'image/jpeg');
     const imageData = fs.readFileSync(req.file.path);
+
     const imgUrl = await fetch(uploadingUrl, {
       method: 'PUT',
       headers: {
@@ -115,7 +118,8 @@ exports.setProfilePic = async (req, res) => {
     })
     
     const imgAddress = await getObjectURL("/uploads/user-uploads/"+ uniqueName)
-    res.status(200).send({ url: imgAddress});
+    console.log(imgAddress)
+    res.status(200).send({ pfp: imgAddress});
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Internal Server Error" });

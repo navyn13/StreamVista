@@ -13,25 +13,6 @@ import Watch_Video from "./Watch_Video";
 
 
 function App() {
-  const [{ isAuth }, dispatch] = useStateValue();
-  const jwtToken = localStorage.getItem('jwtToken')
-  const{decodedToken, isExpired}  = useJwt(jwtToken);
-
-  useEffect(() => {
-      if (decodedToken) {
-        dispatch({
-          type: "SET_USER",
-          user: decodedToken,
-        })
-      }
-      else{
-        dispatch({
-          type: "SET_USER",
-          user: null,
-        })
-      }
-  }, [isAuth, decodedToken]);
-
   return (
     <Router>
       <div className="App">

@@ -14,15 +14,19 @@ function Login() {
   const [{ isAuth }, dispatch] = useStateValue();
   function handleSubmit() {
     const userData = {email, password}
-    console.log(email,password)
     axios
       .post('/login',userData )
       .then((response) => {
+        console.log(response)
         const { token } = response.data;
         localStorage.setItem("jwtToken", token);
         dispatch({
           type: "SET_AUTH",
           isAuth: true,
+        })
+        dispatch({
+          type: "SET_USER",
+          user: response.data.user
         })
         navigate("/");
       })

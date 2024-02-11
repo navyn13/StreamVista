@@ -1,11 +1,12 @@
 export const initialState = {
   user: null,
-  isAuth:false
+  isAuth:false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_USER":
+      console.log(action)
       return {
         ...state,
         user: action.user,

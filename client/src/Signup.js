@@ -10,16 +10,26 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [pfp, setPfp] = useState(null)
+  const [imgAddress, setImgAddress] = useState("")
   const navigate = useNavigate();
   const [{ isAuth }, dispatch] = useStateValue();
-
   async function handleSubmit() {
-    const userData = {
-      username, email, password
-    }
     const formData = new FormData();
     formData.append('image', pfp)
     try {
+      const imgUrl = await axios.post('/profile', formData, {
+        headers: {
+          "Content-Type": 'multipart/form-data',
+        },
+      })
+      console.log(imgUrl.data.pfp)
+      setImgAddress(imgUrl.data.pfp)
+      console.log(imgAddress)
+
+
+      const userData = {
+        username, email, password, imgAddress,
+      }
       const response = await axios.post('/signup', userData);
       const { token } = response.data;
       localStorage.setItem("jwtToken", token);
@@ -27,19 +37,16 @@ function Signup() {
         type: "SET_AUTH",
         isAuth: true,
       });
-      await axios.post('profile', formData,{
-        headers: {
-          "Content-Type": 'multipart/form-data',
-        },
+      dispatch({
+        type: "SET_USER",
+        user: userData
       })
       navigate('/')
+    }
+    catch (error) {
+      console.log('Error: ', error)
+    }
   }
-  catch(error){
-    console.log('Error: ', error)
-  }
-}
-
-
   return (
     <div className="Signup">
       <div className="logo_box">
@@ -89,5 +96,4 @@ function Signup() {
     </div>
   );
 }
-
 export default Signup;
