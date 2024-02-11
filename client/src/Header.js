@@ -29,12 +29,13 @@ function Header() {
   }
   return (
     <div className="Header">
-      <Link to={"/"} style={{ textDecoration: "none" }}><div className="logo">
+      <div className="logo">
         <img
           src="https://www.pngkey.com/png/full/42-423965_twitch-logo-white-png.png"
           alt="logo"
+          onClick={()=>{navigate('/')}}
         ></img>
-      </div></Link>
+      </div>
       <div className="search_box">
         <input className="search_bar" onChange={(e) => { setRoomId(e.target.value) }} placeholder="stream id"></input>
         <button onClick={searchVideo}>Search</button>
@@ -51,7 +52,7 @@ function Header() {
         </div>
         <div className="profile">
           {user ? <div className="channel_pic">
-            <img onClick={logout} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdyTh5ljvubR6s3LeERqK8DHldWwD3DcwBLw&usqp=CAU"></img>
+            <img onClick={logout} src={user.imgAddress}></img>
           </div> : <Link to={"/signup"} style={{ textDecoration: "none" }}><PersonIcon style={{ color: "white" }}></PersonIcon></Link>}
         </div>
       </div>

@@ -48,6 +48,7 @@ async function putObject(filename, contentType) {
 
 
 exports.signup = async (req, res) => {
+  console.log(req.body)
   try {
     const { username, email, password, imgAddress } = req.body;
     const existingUser = await User.findOne({ email: email });
